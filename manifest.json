@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Evil Extension",
+  "version": "1.0",
+  "description": "Changes all there/their/they're to the wrong version",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://twitter.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Evil Extension"
+  }
+}
