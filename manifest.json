@@ -1,14 +1,28 @@
+// NOTE TO STUDENT: You should NOT modify this file unless instructed by the
+// course staff.
 {
-  "manifest_version": 3,
-  "name": "Evil Extension",
+  "name": "Twitter Gardener",
   "version": "1.0",
-  "description": "Changes all there/their/they're to the wrong version",
-  "permissions": ["scripting"],
-  "host_permissions": ["https://twitter.com/*"],
-  "background": {
-    "service_worker": "background.js"
+  "description": "Add some positive affirmations to the Twitter feed you're viewing.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["page.js"]
+    }
+  ],
+  "browser_action": {
+    "default_title": "Twitter Gardener",
+    "default_icon": "images/flower.png",
+    "default_popup": "popup.html"
   },
-  "action": {
-    "default_title": "Evil Extension"
-  }
+  "web_accessible_resources": [
+    "images/*"
+  ],
+
+	"icons": {
+    "16": "images/flower.png",
+    "48": "images/flower.png",
+    "128": "images/flower.png"
+  },
+  "manifest_version": 2
 }

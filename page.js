@@ -1,31 +1,46 @@
-const MATCH_LIST = {
-  'there': 'their',
-  'their': 'there',
-  "they're": 'there',
-  'There': 'Their',
-  'Their': 'There',
-  "They're": 'There',
-  'THERE': 'THEIR',
-  'THEIR': 'THERE',
-  "THEY'RE": 'THERE'
-};
+// TODO(you): Add your own positive messages if you'd like!
+const POSITIVE_MESSAGES = [
+  'You are worthy.',
+  'You are enough.',
+  'Be kind and forgiving to yourself.',
+  'You are amazing.',
+  'It\'s okay not to be okay.',
+  'It\'s enough to just breathe.',
+  'You are loved.',
+  'I believe in you.',
+  'You can do it!',
+  'You are not a failure.',
+  'You matter.',
+  'Your life matters.'
+];
 
-function transformTextNodes(node) {
-  if (node.nodeType === Node.TEXT_NODE) {
-    let text = node.textContent;
-    for (const key in MATCH_LIST) {
-      const value = MATCH_LIST[key];
-      text = text.split(' ').map(word => word === key ? value : word).join(' ');
-    }
-    node.textContent = text;
-  } else if (
-    node.nodeType === Node.ELEMENT_NODE &&
-    node.nodeName !== 'SCRIPT' &&
-    node.nodeName !== 'STYLE'
-  ) {
-    node.childNodes.forEach(child => transformTextNodes(child));
-  }
+const cursor_image = chrome.runtime.getURL('images/rose-cursor.gif');
+const backgorund_image = chrome.runtime.getURL('images/sparkle.gif');
+chrome.runtime.onConnect.addListener(function(port) {
+  port.onMessage.addListener(onMessage);
+});
+
+function startGardening(){
+	
 }
 
-transformTextNodes(document.body);
-console.log('Evil extension loaded!');
+function stopGardening(){
+	
+	
+}
+
+function onMessage(gardeningInProgress) {
+  // TODO(you): Implement this function for extra credit! Add helper functions
+  // as needed.
+
+  if (gardeningInProgress) {
+    startGardening();
+  }
+  else{
+    stopGardening();
+  }
+  // NOTE: This extension is EXTRA CREDIT and is not required for HW2.
+
+  // If `gardeningInProgress` is true, that means "Start Gardening" was clicked.
+  // If `gardeningInProgress` is false, that means "Stop Gardening" was clicked.
+}
